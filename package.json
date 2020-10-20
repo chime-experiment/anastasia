@@ -1,0 +1,29 @@
+{
+  "name": "anastasia",
+  "private": true,
+  "version": "0.0.1",
+  "description": "Slack app that responds to /signoff and collects a tsar report",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "DEBUG=anastasia node src/index.js",
+    "dev": "nodemon src/index.js"
+  },
+  "authors": [
+    "Rick Nitsche <rick@phas.ubc.ca>"
+  ],
+  "engines": {
+    "node": ">=4.2.0",
+    "npm": ">=2.14.7"
+  },
+  "dependencies": {
+    "axios": "^0.18.1",
+    "body-parser": "^1.17.1",
+    "debug": "^3.1.0",
+    "dotenv": "^4.0.0",
+    "express": "^4.15.2",
+    "tsscmp": "^1.0.6"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.4"
+  }
+}
