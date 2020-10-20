@@ -4,6 +4,7 @@
   "version": "0.0.1",
   "description": "Slack app that responds to /signoff and collects a tsar report",
   "scripts": {
+    "pretest": "eslint --ignore-path .gitignore .",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "DEBUG=anastasia node src/index.js",
     "dev": "nodemon src/index.js"
@@ -24,6 +25,8 @@
     "tsscmp": "^1.0.6"
   },
   "devDependencies": {
+    "eslint": "^7.11.0",
+    "eslint-config-strongloop": "^2.1.0",
     "nodemon": "^1.19.4"
   }
 }
