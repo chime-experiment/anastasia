@@ -196,7 +196,7 @@ module.exports = {
                 {
                   text: {
                     type: 'plain_text',
-                    text: 'Are all services running?',
+                    text: 'All services are running',
                   },
                   value: 'ok',
                   description: {
@@ -246,8 +246,8 @@ module.exports = {
                 {
                   text: {
                     type: 'plain_text',
-                    text: 'Are all current alerts understood and the ' +
-                      'underlying problems solved?',
+                    text: 'All current alerts are understood and the ' +
+                      'underlying problems are solved',
                   },
                   value: 'ok',
                 },
@@ -400,7 +400,7 @@ module.exports = {
                 {
                   text: {
                     type: 'plain_text',
-                    text: 'There been no gain jumps during my shift.',
+                    text: 'There ihave been no gain jumps during my shift',
                   },
                   description: {
                     type: 'mrkdwn',
@@ -495,7 +495,7 @@ module.exports = {
                 {
                   text: {
                     type: 'plain_text',
-                    text: 'Does the ringmap look alright?',
+                    text: 'The ringmap looks good',
                   },
                   description: {
                     type: 'plain_text',
