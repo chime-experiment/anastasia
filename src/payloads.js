@@ -127,7 +127,7 @@ module.exports = {
               text: 'Median RFI (Stage 1)',
             },
             hint: {
-              type: 'mrkdwn',
+              type: 'plain_text',
               text: 'Eyeball the median for the duration of your shift using ' +
                 'the System Health Quicklook: <https://grafana.chimenet.ca/' +
                 'd/K1vQ0fPmk/system-health-quicklook>',
@@ -149,7 +149,7 @@ module.exports = {
               text: 'Median RFI (Stage 2)',
             },
             hint: {
-              type: 'mrkdwn',
+              type: 'plain_text',
               text: 'Eyeball the median for the duration of your shift using ' +
                 'the System Health Quicklook: <https://grafana.chimenet.ca/' +
                 'd/K1vQ0fPmk/system-health-quicklook>',
@@ -296,12 +296,12 @@ module.exports = {
                 type: 'plain_text',
                 text: 'Enter a percentage',
               },
-              hint: {
-                type: 'mrkdwn',
-                text: 'See <https://grafana.chimenet.ca/d/EjvkNI2mz/' +
-                  'calibration-broker> for the fraction of good frequencies ' +
-                  'for the last calibration transit.',
-              },
+            },
+            hint: {
+              type: 'plain_text',
+              text: 'See <https://grafana.chimenet.ca/d/EjvkNI2mz/' +
+                'calibration-broker> for the fraction of good frequencies ' +
+                'for the last calibration transit.',
             },
           },
           {
@@ -335,7 +335,7 @@ module.exports = {
               text: 'Average Sensitivity for EW',
             },
             hint: {
-              type: 'mrkdwn',
+              type: 'plain_text',
               text: '<https://grafana.chimenet.ca/d/d_OJtTBmk/data-integrity>',
             },
             element: {
@@ -355,7 +355,7 @@ module.exports = {
               text: 'Average Sensitivity for NS',
             },
             hint: {
-              type: 'mrkdwn',
+              type: 'plain_text',
               text: '<https://grafana.chimenet.ca/d/d_OJtTBmk/data-integrity>',
             },
             element: {
@@ -400,7 +400,7 @@ module.exports = {
                 {
                   text: {
                     type: 'plain_text',
-                    text: 'Have there been no gain jumps during your shift?',
+                    text: 'There been no gain jumps during my shift.',
                   },
                   description: {
                     type: 'mrkdwn',
