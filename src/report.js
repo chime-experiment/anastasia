@@ -1,3 +1,5 @@
+'use strict';
+
 const debug = require('debug')('anastasia:report');
 const api = require('./api');
 const payloads = require('./payloads');
@@ -13,23 +15,23 @@ const sendConfirmation = async (report) => {
     report: `Number of active nodes: ${report.num_nodes} (${report.num_nodes_note})\nMedian RFI: ${report.median_rfi} (${report.median_rfi_note})`,
     user: report.user_name,
   });
-  console.log(message)
+  console.log(message);
 
-  let result = await api.callAPIMethod('chat.postMessage', message)
-  console.log(result)
+  let result = await api.callAPIMethod('chat.postMessage', message);
+  console.log(result);
   debug('sendConfirmation: %o', result);
 };
 
-// Create helpdesk ticket. Call users.find to get the user's email address
+// Create report. Call users.info to get the username
 // from their user ID
-const create = async (userId, view) => {
+const create = async(userId, view) => {
   let values = view.state.values;
 
   let result = await api.callAPIMethod('users.info', {
-    user: userId
+    user: userId,
   });
 
-  console.log(userId)
+  console.log(userId);
   await sendConfirmation({
     userId,
     user_name: result.user.name,
@@ -40,4 +42,4 @@ const create = async (userId, view) => {
   });
 };
 
-module.exports = { create, sendConfirmation };
+module.exports = {create, sendConfirmation};

@@ -1,3 +1,5 @@
+'use strict';
+
 require('dotenv').config();
 
 const express = require('express');
@@ -22,22 +24,25 @@ const rawBodyBuffer = (req, res, buf, encoding) => {
   }
 };
 
-app.use(bodyParser.urlencoded({ verify: rawBodyBuffer, extended: true }));
-app.use(bodyParser.json({ verify: rawBodyBuffer }));
+app.use(bodyParser.urlencoded({verify: rawBodyBuffer, extended: true}));
+app.use(bodyParser.json({verify: rawBodyBuffer}));
 
-app.get('/', (req, res) => {
-  res.send('<h2>Anastasia is running</h2> <p>Follow the' +
-    ' instructions in the README to configure the Slack App and your environment variables.</p>');
-});
+app.get('/',
+  (req, res) => {
+    res.send('<h2>Anastasia is running</h2> <p>Follow the' +
+      ' instructions in the README to configure the Slack App and your ' +
+      'environment variables.</p>');
+  });
 
 /*
  * Endpoint to receive /signoff slash command from Slack.
  * Checks verification token and opens a dialog to capture more info.
  */
-app.post('/signoff', async (req, res) => {
-  debug('signoff')
-  console.log("signoff")
-  console.log(req.body)
+app.post('/signoff', async(
+  req, res) => {
+  debug('signoff');
+  console.log('signoff');
+  console.log(req.body);
   // Verify the signing secret
   if (!signature.isVerified(req)) {
     debug('Verification token mismatch');
@@ -45,13 +50,13 @@ app.post('/signoff', async (req, res) => {
   }
 
   // extract the slash command text, and trigger ID from payload
-  const { trigger_id } = req.body;
-  console.log(trigger_id)
+  const {trigger_id} = req.body;
+  console.log(trigger_id);
 
   // create the modal payload - includes the dialog structure, Slack API token,
   // and trigger ID
   let view = payloads.modal({
-    trigger_id
+    trigger_id,
   });
 
   let result = await api.callAPIMethod('views.open', view);
@@ -65,7 +70,8 @@ app.post('/signoff', async (req, res) => {
  * Endpoint to receive the dialog submission. Checks the verification token
  * and creates a report entry
  */
-app.post('/report', (req, res) => {
+app.post('/report', (req,
+  res) => {
   // Verify the signing secret
   if (!signature.isVerified(req)) {
     debug('Verification token mismatch');
@@ -78,5 +84,6 @@ app.post('/report', (req, res) => {
 });
 
 const server = app.listen(process.env.PORT || 8010, () => {
-  console.log('Express server listening on port %d in %s mode', server.address().port, app.settings.env);
+  console.log('Express server listening on port %d in %s mode',
+    server.address().port, app.settings.env);
 });
