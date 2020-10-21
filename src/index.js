@@ -3,6 +3,7 @@
 require('dotenv').config();
 
 const express = require('express');
+const helmet = require('helmet');
 const bodyParser = require('body-parser');
 const report = require('./report');
 const signature = require('./verifySignature');
@@ -11,6 +12,7 @@ const payloads = require('./payloads');
 const debug = require('debug')('anastasia:index');
 
 const app = express();
+app.use(helmet());
 
 /*
  * Parse application/x-www-form-urlencoded && application/json
