@@ -48,7 +48,7 @@ const sendConfirmation = async(report) => {
     report.ringmap_ok ? '' : '\n';
 
   let message = payloads.confirmation({
-    channel_id: 'CFV01K274',
+    channel_id: process.env.ANASTASIA_SLACK_CHANNEL,
     report: text,
     user: report.user_name,
   });
