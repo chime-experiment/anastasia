@@ -39,7 +39,7 @@ app.post('/signoff', async(
     return res.status(404).send();
   }
 
-  // extract the slash command text, and trigger ID from payload
+  // extract the trigger ID from payload
   const {trigger_id} = req.body;
 
   // create the modal payload - includes the dialog structure, Slack API token,
@@ -51,6 +51,28 @@ app.post('/signoff', async(
   let result = await api.callAPIMethod('views.open', view);
 
   debug('views.open: %o', result);
+  return res.send('');
+});
+
+/*
+ * Endpoint to receive /signin slash command from Slack.
+ * Checks verification token and sends a message to the
+ * channel with the user name.
+ */
+app.post('/signin', async(
+  req, res) => {
+  // Verify the signing secret
+  if (!signature.isVerified(req)) {
+    debug('Verification token mismatch');
+    return res.status(404).send();
+  }
+  let message = payloads.signin({
+    channel_id: process.env.ANASTASIA_SLACK_CHANNEL,
+    user: req.body.user_id,
+  });
+
+  let result = await api.callAPIMethod('chat.postMessage', message);
+  debug('sendConfirmation: %o', result);
   return res.send('');
 });
 

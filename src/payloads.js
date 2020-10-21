@@ -1,6 +1,20 @@
 'use strict';
 
 module.exports = {
+  signin: context => {
+    return {
+      channel: context.channel_id,
+      blocks: JSON.stringify([
+        {
+          type: 'section',
+          text: {
+            type: 'mrkdwn',
+            text: `*User <@${context.user}> signed in.*`,
+          },
+        },
+      ]),
+    };
+  },
   confirmation: context => {
     return {
       channel: context.channel_id,
@@ -27,7 +41,7 @@ module.exports = {
           type: 'section',
           text: {
             type: 'mrkdwn',
-            text: `User ${context.user} signed off.`,
+            text: `*User <@${context.user}> signed off.*`,
           },
         },
         // {
