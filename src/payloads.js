@@ -440,48 +440,49 @@ module.exports = {
           },
 
           // Transits
-          {
-            block_id: 'transit_block',
-            type: 'input',
-            label: {
-              type: 'plain_text',
-              text: 'Latest source flux',
-            },
-            element: {
-              action_id: 'transit_flux',
-              type: 'plain_text_input',
-              placeholder: {
-                type: 'plain_text',
-                text: 'Enter a number',
-              },
-            },
-            hint: {
-              type: 'plain_text',
-              text: 'If there was a transit during the shift',
-            },
-            optional: true,
-          },
-          {
-            block_id: 'transit_note_block',
-            type: 'input',
-            label: {
-              type: 'plain_text',
-              text: 'Note:',
-            },
-            element: {
-              action_id: 'transit_note',
-              type: 'plain_text_input',
-              multiline: true,
-              placeholder: {
-                type: 'plain_text',
-                text: 'Add details here',
-              },
-            },
-            optional: true,
-          },
-          {
-            type: 'divider',
-          },
+          // TODO: activate once theremin plot is available
+          // {
+          //   block_id: 'transit_block',
+          //   type: 'input',
+          //   label: {
+          //     type: 'plain_text',
+          //     text: 'Latest source flux',
+          //   },
+          //   element: {
+          //     action_id: 'transit_flux',
+          //     type: 'plain_text_input',
+          //     placeholder: {
+          //       type: 'plain_text',
+          //       text: 'Enter a number',
+          //     },
+          //   },
+          //   hint: {
+          //     type: 'plain_text',
+          //     text: 'If there was a transit during the shift',
+          //   },
+          //   optional: true,
+          // },
+          // {
+          //   block_id: 'transit_note_block',
+          //   type: 'input',
+          //   label: {
+          //     type: 'plain_text',
+          //     text: 'Note:',
+          //   },
+          //   element: {
+          //     action_id: 'transit_note',
+          //     type: 'plain_text_input',
+          //     multiline: true,
+          //     placeholder: {
+          //       type: 'plain_text',
+          //       text: 'Add details here',
+          //     },
+          //   },
+          //   optional: true,
+          // },
+          // {
+          //   type: 'divider',
+          // },
 
           // Ringmap
           {

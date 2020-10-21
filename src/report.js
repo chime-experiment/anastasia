@@ -41,10 +41,12 @@ const sendConfirmation = async(report) => {
   text += report.gains_note ? `Note: ${report.gains_note}\n\n` :
     report.gains_ok ? '' : '\n';
 
-  text += report.transit_flux ? `Latest source flux: ${report.transit_flux}\n` :
-    report.transit_flux_note ? 'Transits ' : '';
-  text += report.transit_flux_note ? `Note: ${report.transit_flux_note}\n\n` :
-    report.transit_flux ? '\n' : '';
+  // text += report.transit_flux ? `Latest source flux:
+  // ${report.transit_flux}\n` :
+  //   report.transit_flux_note ? 'Transits ' : '';
+  // text += report.transit_flux_note ?
+  // `Note: ${report.transit_flux_note}\n\n` :
+  //   report.transit_flux ? '\n' : '';
 
   text += report.ringmap_ok ? report.ringmap_note ? 'Ringmap ' : '' :
     'There are issues with the ringmap.\n';
@@ -94,8 +96,8 @@ const create = async(userId, view) => {
     gains_ok: (gains_selection !== undefined
       && gains_selection.length === 1),
     gains_note: values.gains_note_block.gains_note.value,
-    transit_flux: values.transit_block.transit_flux.value,
-    transit_flux_note: values.transit_note_block.transit_note.value,
+    // transit_flux: values.transit_block.transit_flux.value,
+    // transit_flux_note: values.transit_note_block.transit_note.value,
     ringmap_ok: (ringmap_selection !== undefined
       && ringmap_selection.length === 1),
     ringmap_note: values.ringmap_note_block.ringmap_note.value,
