@@ -27,18 +27,18 @@ module.exports = {
           type: 'section',
           text: {
             type: 'mrkdwn',
-            text: `User: ${context.user}`,
+            text: `User ${context.user} signed off.`,
           },
         },
-        {
-          type: 'context',
-          elements: [
-            {
-              type: 'mrkdwn',
-              text: '*See all tsarina reports here*: http://foo.bar',
-            },
-          ],
-        },
+        // {
+        //   type: 'context',
+        //   elements: [
+        //     {
+        //       type: 'mrkdwn',
+        //       text: '*See all tsarina reports here*: http://foo.bar',
+        //     },
+        //   ],
+        // },
       ]),
     };
   },
@@ -406,7 +406,7 @@ module.exports = {
             block_id: 'ringmap_block',
             element: {
               type: 'checkboxes',
-              action_id: 'alerts_ok',
+              action_id: 'ringmap_ok',
               options: [
                 {
                   text: {
