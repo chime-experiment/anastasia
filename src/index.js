@@ -27,22 +27,12 @@ const rawBodyBuffer = (req, res, buf, encoding) => {
 app.use(bodyParser.urlencoded({verify: rawBodyBuffer, extended: true}));
 app.use(bodyParser.json({verify: rawBodyBuffer}));
 
-app.get('/',
-  (req, res) => {
-    res.send('<h2>Anastasia is running</h2> <p>Follow the' +
-      ' instructions in the README to configure the Slack App and your ' +
-      'environment variables.</p>');
-  });
-
 /*
  * Endpoint to receive /signoff slash command from Slack.
  * Checks verification token and opens a dialog to capture more info.
  */
 app.post('/signoff', async(
   req, res) => {
-  debug('signoff');
-  console.log('signoff');
-  console.log(req.body);
   // Verify the signing secret
   if (!signature.isVerified(req)) {
     debug('Verification token mismatch');
