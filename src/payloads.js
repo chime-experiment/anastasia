@@ -77,7 +77,7 @@ module.exports = {
             type: 'input',
             label: {
               type: 'plain_text',
-              text: 'Number of active nodes',
+              text: 'Number of nodes running kotekan',
             },
             element: {
               action_id: 'num_nodes',
@@ -89,7 +89,7 @@ module.exports = {
             },
             hint: {
               type: 'plain_text',
-              text: 'How many active nodes are there right now?',
+              text: 'How many GPU nodes are up running kotekan right now?',
             },
           },
           {
@@ -120,18 +120,46 @@ module.exports = {
 
           // Median RFI
           {
-            block_id: 'median_rfi_block',
+            block_id: 'median_rfi1_block',
             type: 'input',
             label: {
               type: 'plain_text',
-              text: 'Median RFI',
+              text: 'Median RFI (Stage 1)',
+            },
+            hint: {
+              type: 'mrkdwn',
+              text: 'Eyeball the median for the duration of your shift using ' +
+                'the System Health Quicklook: <https://grafana.chimenet.ca/' +
+                'd/K1vQ0fPmk/system-health-quicklook>',
             },
             element: {
               action_id: 'rfi',
               type: 'plain_text_input',
               placeholder: {
                 type: 'plain_text',
-                text: 'Enter a number, I guess. What is Median RFI, Mandana?',
+                text: 'Enter a percentage',
+              },
+            },
+          },
+          {
+            block_id: 'median_rfi2_block',
+            type: 'input',
+            label: {
+              type: 'plain_text',
+              text: 'Median RFI (Stage 2)',
+            },
+            hint: {
+              type: 'mrkdwn',
+              text: 'Eyeball the median for the duration of your shift using ' +
+                'the System Health Quicklook: <https://grafana.chimenet.ca/' +
+                'd/K1vQ0fPmk/system-health-quicklook>',
+            },
+            element: {
+              action_id: 'rfi',
+              type: 'plain_text_input',
+              placeholder: {
+                type: 'plain_text',
+                text: 'Enter a percentage',
               },
             },
           },
@@ -266,7 +294,13 @@ module.exports = {
               type: 'plain_text_input',
               placeholder: {
                 type: 'plain_text',
-                text: 'Enter a decimal',
+                text: 'Enter a percentage',
+              },
+              hint: {
+                type: 'mrkdwn',
+                text: 'See <https://grafana.chimenet.ca/d/EjvkNI2mz/' +
+                  'calibration-broker> for the fraction of good frequencies ' +
+                  'for the last calibration transit.',
               },
             },
           },
@@ -294,18 +328,42 @@ module.exports = {
 
           // Sensitivity
           {
-            block_id: 'sensitivity_block',
+            block_id: 'sensitivity_ew_block',
             type: 'input',
             label: {
               type: 'plain_text',
-              text: 'Average Sensitivity',
+              text: 'Average Sensitivity for EW',
+            },
+            hint: {
+              type: 'mrkdwn',
+              text: '<https://grafana.chimenet.ca/d/d_OJtTBmk/data-integrity>',
             },
             element: {
               action_id: 'sensitivity',
               type: 'plain_text_input',
               placeholder: {
                 type: 'plain_text',
-                text: 'Enter a number',
+                text: 'Enter a value in uJy',
+              },
+            },
+          },
+          {
+            block_id: 'sensitivity_ns_block',
+            type: 'input',
+            label: {
+              type: 'plain_text',
+              text: 'Average Sensitivity for NS',
+            },
+            hint: {
+              type: 'mrkdwn',
+              text: '<https://grafana.chimenet.ca/d/d_OJtTBmk/data-integrity>',
+            },
+            element: {
+              action_id: 'sensitivity',
+              type: 'plain_text_input',
+              placeholder: {
+                type: 'plain_text',
+                text: 'Enter a value in uJy',
               },
             },
           },
@@ -333,19 +391,30 @@ module.exports = {
 
           // Gains
           {
-            block_id: 'gains_block',
             type: 'input',
+            block_id: 'gains_block',
+            element: {
+              type: 'checkboxes',
+              action_id: 'gains_ok',
+              options: [
+                {
+                  text: {
+                    type: 'plain_text',
+                    text: 'Have there been no gain jumps during your shift?',
+                  },
+                  description: {
+                    type: 'mrkdwn',
+                    text: '<https://grafana.chimenet.ca/d/d_OJtTBmk/' +
+                      'data-integrity>',
+                  },
+                  value: 'ok',
+                },
+              ],
+            },
+            optional: true,
             label: {
               type: 'plain_text',
-              text: 'Number of gain jumps',
-            },
-            element: {
-              action_id: 'gains',
-              type: 'plain_text_input',
-              placeholder: {
-                type: 'plain_text',
-                text: 'Enter a number',
-              },
+              text: 'Gain jumps',
             },
           },
           {
@@ -454,7 +523,8 @@ module.exports = {
               multiline: true,
               placeholder: {
                 type: 'plain_text',
-                text: 'Add details here',
+                text: 'Note any anomalous features here. e.g. sudden level ' +
+                  'changes, apparent RFI, garbled or missing data, ...',
               },
             },
             optional: true,
