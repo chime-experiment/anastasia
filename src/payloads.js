@@ -9,7 +9,7 @@ module.exports = {
           type: 'section',
           text: {
             type: 'mrkdwn',
-            text: `*User <@${context.user}> signed in.*`,
+            text: `*<@${context.user}> signed in.*`,
           },
         },
       ]),
@@ -41,7 +41,7 @@ module.exports = {
           type: 'section',
           text: {
             type: 'mrkdwn',
-            text: `*User <@${context.user}> signed off.*`,
+            text: `*<@${context.user}> signed off.*`,
           },
         },
         // {
