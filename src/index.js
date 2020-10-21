@@ -51,7 +51,6 @@ app.post('/signoff', async(
 
   // extract the slash command text, and trigger ID from payload
   const {trigger_id} = req.body;
-  console.log(trigger_id);
 
   // create the modal payload - includes the dialog structure, Slack API token,
   // and trigger ID
@@ -62,7 +61,6 @@ app.post('/signoff', async(
   let result = await api.callAPIMethod('views.open', view);
 
   debug('views.open: %o', result);
-  console.log('views.open: %o', result);
   return res.send('');
 });
 

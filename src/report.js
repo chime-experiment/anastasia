@@ -52,10 +52,8 @@ const sendConfirmation = async(report) => {
     report: text,
     user: report.user_name,
   });
-  console.log(message);
 
   let result = await api.callAPIMethod('chat.postMessage', message);
-  console.log(result);
   debug('sendConfirmation: %o', result);
 };
 
@@ -68,7 +66,6 @@ const create = async(userId, view) => {
     user: userId,
   });
 
-  console.log(userId);
   await sendConfirmation({
     userId,
     user_name: result.user.name,
