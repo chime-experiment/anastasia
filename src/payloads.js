@@ -118,6 +118,54 @@ module.exports = {
             type: 'divider',
           },
 
+          // Number of flagged feeds
+          {
+            block_id: 'num_flagged_feeds_block',
+            type: 'input',
+            label: {
+              type: 'plain_text',
+              text: 'Number of flagged feeds',
+            },
+            element: {
+              action_id: 'num_flagged_feeds',
+              type: 'plain_text_input',
+              placeholder: {
+                type: 'plain_text',
+                text: 'Enter a number',
+              },
+            },
+            hint: {
+              type: 'plain_text',
+              text: 'How many feeds are flagged right now?',
+            },
+          },
+          {
+            block_id: 'num_flagged_feeds_note_block',
+            type: 'input',
+            label: {
+              type: 'plain_text',
+              text: 'Note:',
+            },
+            element: {
+              action_id: 'num_flagged_feeds_note',
+              type: 'plain_text_input',
+              placeholder: {
+                type: 'plain_text',
+                text: 'Add details here: Has the number changed during your ' +
+                  'shift? Possible causes for jumps in the number?',
+              },
+              multiline: true,
+            },
+            hint: {
+              type: 'plain_text',
+              text: 'Details about flagged feeds.',
+            },
+            optional: true,
+          },
+          {
+            type: 'divider',
+          },
+
           // Median RFI
           {
             block_id: 'median_rfi1_block',
@@ -287,7 +335,7 @@ module.exports = {
             type: 'input',
             label: {
               type: 'plain_text',
-              text: 'Fraction of good frequencies',
+              text: 'Percentage of good frequencies',
             },
             element: {
               action_id: 'calibration',
@@ -300,7 +348,7 @@ module.exports = {
             hint: {
               type: 'plain_text',
               text: 'See <https://grafana.chimenet.ca/d/EjvkNI2mz/' +
-                'calibration-broker> for the fraction of good frequencies ' +
+                'calibration-broker> for the percentage of good frequencies ' +
                 'for the last calibration transit.',
             },
           },
