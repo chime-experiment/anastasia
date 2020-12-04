@@ -9,6 +9,23 @@ const payloads = require('./payloads');
  *  chat.postMessage to #tsar_committee
  */
 const sendConfirmation = async(report) => {
+  // Remove duplicate units
+  if (report.median_rfi1.endsWith('%')) {
+    report.median_rfi1 = report.median_rfi1.slice(0, -1);
+  }
+  if (report.median_rfi2.endsWith('%')) {
+    report.median_rfi2 = report.median_rfi2.slice(0, -1);
+  }
+  if (report.calibration.endsWith('%')) {
+    report.calibration = report.calibration.slice(0, -1);
+  }
+  if (report.sensitivity_ew.toUpperCase().endsWith('UJY')) {
+    report.sensitivity_ew = report.sensitivity_ew.slice(0, -3);
+  }
+  if (report.sensitivity_ns.toUpperCase().endsWith('UJY')) {
+    report.sensitivity_ns = report.sensitivity_ns.slice(0, -3);
+  }
+
   let text = `Number of active nodes: ${report.num_nodes}\n`;
   text += report.num_nodes_note ? `Note: ${report.num_nodes_note}\n\n` : '\n';
 
