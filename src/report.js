@@ -12,6 +12,10 @@ const sendConfirmation = async(report) => {
   let text = `Number of active nodes: ${report.num_nodes}\n`;
   text += report.num_nodes_note ? `Note: ${report.num_nodes_note}\n\n` : '\n';
 
+  text += `Number of flagged feeds: ${report.num_flagged_feeds}\n`;
+  text += report.num_flagged_feeds_note ?
+    `Note: ${report.num_flagged_feeds_note}\n\n` : '\n';
+
   text += `Median RFI of stage 1: ${report.median_rfi1}%\n`;
   text += `Median RFI of stage 2: ${report.median_rfi2}%\n`;
   text += report.median_rfi_note ? `Note: ${report.median_rfi_note}\n\n` : '\n';
@@ -78,6 +82,9 @@ const create = async(userId, view) => {
     user_id: userId,
     num_nodes: values.num_nodes_block.num_nodes.value,
     num_nodes_note: values.num_nodes_note_block.num_nodes_note.value,
+    num_flagged_feeds: values.num_flagged_feeds_block.num_flagged_feeds.value,
+    num_flagged_feeds_note:
+      values.num_flagged_feeds_note_block.num_flagged_feeds_note.value,
     median_rfi1: values.median_rfi1_block.rfi.value,
     median_rfi2: values.median_rfi2_block.rfi.value,
     median_rfi_note: values.median_rfi_note_block.median_rfi_note.value,
