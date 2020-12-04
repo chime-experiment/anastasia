@@ -335,7 +335,7 @@ module.exports = {
             type: 'input',
             label: {
               type: 'plain_text',
-              text: 'Fraction of good frequencies',
+              text: 'Percentage of good frequencies',
             },
             element: {
               action_id: 'calibration',
@@ -348,7 +348,7 @@ module.exports = {
             hint: {
               type: 'plain_text',
               text: 'See <https://grafana.chimenet.ca/d/EjvkNI2mz/' +
-                'calibration-broker> for the fraction of good frequencies ' +
+                'calibration-broker> for the percentage of good frequencies ' +
                 'for the last calibration transit.',
             },
           },
