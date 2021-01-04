@@ -448,7 +448,7 @@ module.exports = {
                 {
                   text: {
                     type: 'plain_text',
-                    text: 'There ihave been no gain jumps during my shift',
+                    text: 'There have been no gain jumps during my shift',
                   },
                   description: {
                     type: 'mrkdwn',
