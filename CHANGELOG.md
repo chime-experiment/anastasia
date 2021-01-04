@@ -1,3 +1,12 @@
+## 0.1.1 (2021-01-04)
+
+### Bug Fixes
+
+* **dependencies:** bump axios version to fix security vulnerability
+* **payload:** typo
+
+
+
 ## 0.1.0 (2020-12-04)
 
 
