@@ -74,6 +74,11 @@ const sendConfirmation = async(report) => {
   text += report.ringmap_note ? `Note: ${report.ringmap_note}\n\n` :
     report.ringmap_ok ? '' : '\n';
 
+  text += report.bondia_note ? `Reviewed CSD ${report.bondia_note}\n\n` :
+    report.bondia_ok ? '' : '\n';
+  text += report.bondia_ok ? report.bondia_note ? 'Bondia ' : '' :
+    `There are issues with CSD ${report.bondia_csd}\n\n`;
+
   let message = payloads.confirmation({
     channel_id: process.env.ANASTASIA_SLACK_CHANNEL,
     report: text,
@@ -94,6 +99,7 @@ const create = async(userId, view) => {
   let alerts_selection = values.alerts_block.alerts_ok.selected_options;
   let ringmap_selection = values.ringmap_block.ringmap_ok.selected_options;
   let gains_selection = values.gains_block.gains_ok.selected_options;
+  let bondia_selection = values.bondia_block.bondia_ok.selected_options;
 
   await sendConfirmation({
     user_id: userId,
@@ -125,6 +131,9 @@ const create = async(userId, view) => {
     ringmap_ok: (ringmap_selection !== undefined
       && ringmap_selection.length === 1),
     ringmap_note: values.ringmap_note_block.ringmap_note.value,
+    bondia_ok: (bondia_selection !== undefined
+        && bondia_selection.length === 1),
+    bondia_note: values.bondia_note_block.bondia_note.value,
   });
 };
 
