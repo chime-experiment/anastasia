@@ -578,6 +578,55 @@ module.exports = {
             },
             optional: true,
           },
+          {
+            type: 'divider',
+          },
+          // Bondia
+          {
+            block_id: 'bondia_block',
+            type: 'input',
+            element: {
+              type: 'checkboxes',
+              action_id: 'bondia_ok',
+              options: [
+                {
+                  text: {
+                    type: 'plain_text',
+                    text: 'Most recent CSD looks good',
+                  },
+                  description: {
+                    type: 'plain_text',
+                    text: 'https://bao.chimenet.ca/bondia/',
+                  },
+                  value: 'ok',
+                },
+              ],
+            },
+            label: {
+              type: 'plain_text',
+              text: 'Bondia',
+            },
+          },
+          {
+            block_id: 'bondia_note_block',
+            type: 'input',
+            label: {
+              type: 'plain_text',
+              text: 'Day Reviewed: ',
+            },
+            hint: {
+              type: 'plain_text',
+              text: 'Note the CSD you reviewed here:',
+            },
+            element: {
+              action_id: 'bondia_note',
+              type: 'plain_text_input',
+              placeholder: {
+                type: 'plain_text',
+                text: 'Enter a CSD',
+              },
+            },
+          },
         ],
       }),
     };
