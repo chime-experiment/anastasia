@@ -450,16 +450,15 @@ module.exports = {
                     type: 'plain_text',
                     text: 'Autocorrelation jumps have all been flagged.',
                   },
-                  description: {
-                    type: 'mrkdwn',
-                    text: 'Locate channels here: <https://theremin.chimenet.ca/graphs/jumps> ' +
-                      'which have more than ~10 jumps in the past few days. Check ' +
-                      'here: <https://grafana.chimenet.ca/d/NTyRb6SSz> ' +
-                      'to ensure that these channels are being flagged.',
-                  },
                   value: 'ok',
                 },
               ],
+            },
+            hint: {
+              type: 'plain_text',
+              text: 'Check <https://theremin.chimenet.ca/graphs/jumps> ' +
+                'for channels with more than 10 jumps. Check <https://grafana.chimenet.ca/d/NTyRb6SSz> ' +
+                'to see if they are being flagged.',
             },
             optional: true,
             label: {
