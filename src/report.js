@@ -57,10 +57,10 @@ const sendConfirmation = async(report) => {
   text += report.sensitivity_note ?
     `Note: ${report.sensitivity_note}\n\n` : '\n';
 
-  text += report.gains_ok ? report.gains_note ? 'Gain jumps ' : '' :
-    'There have been gain jumps.\n';
-  text += report.gains_note ? `Note: ${report.gains_note}\n\n` :
-    report.gains_ok ? '' : '\n';
+  text += report.jumps_ok ? report.jumps_note ? 'Autocorrelation jumps ' : '' :
+    'There have been unflagged autocorrelation jumps.\n';
+  text += report.jumps_note ? `Note: ${report.jumps_note}\n\n` :
+    report.jumps_ok ? '' : '\n';
 
   // text += report.transit_flux ? `Latest source flux:
   // ${report.transit_flux}\n` :
@@ -93,7 +93,7 @@ const create = async(userId, view) => {
     values.system_health_block.system_health_ok.selected_options;
   let alerts_selection = values.alerts_block.alerts_ok.selected_options;
   let ringmap_selection = values.ringmap_block.ringmap_ok.selected_options;
-  let gains_selection = values.gains_block.gains_ok.selected_options;
+  let jumps_selection = values.jumps_block.jumps_ok.selected_options;
 
   await sendConfirmation({
     user_id: userId,
@@ -117,9 +117,9 @@ const create = async(userId, view) => {
     sensitivity_ew: values.sensitivity_ew_block.sensitivity.value,
     sensitivity_ns: values.sensitivity_ns_block.sensitivity.value,
     sensitivity_note: values.sensitivity_note_block.sensitivity_note.value,
-    gains_ok: (gains_selection !== undefined
-      && gains_selection.length === 1),
-    gains_note: values.gains_note_block.gains_note.value,
+    jumps_ok: (jumps_selection !== undefined
+      && jumps_selection.length === 1),
+    jumps_note: values.jumps_note_block.jumps_note.value,
     // transit_flux: values.transit_block.transit_flux.value,
     // transit_flux_note: values.transit_note_block.transit_note.value,
     ringmap_ok: (ringmap_selection !== undefined

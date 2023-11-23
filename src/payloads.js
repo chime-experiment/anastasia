@@ -440,20 +440,22 @@ module.exports = {
           // Gains
           {
             type: 'input',
-            block_id: 'gains_block',
+            block_id: 'jumps_block',
             element: {
               type: 'checkboxes',
-              action_id: 'gains_ok',
+              action_id: 'jumps_ok',
               options: [
                 {
                   text: {
                     type: 'plain_text',
-                    text: 'There have been no gain jumps during my shift',
+                    text: 'Autocorrelation jumps have all been flagged.',
                   },
                   description: {
                     type: 'mrkdwn',
-                    text: '<https://grafana.chimenet.ca/d/d_OJtTBmk/' +
-                      'data-integrity>',
+                    text: 'Locate channels here: <https://theremin.chimenet.ca/graphs/jumps> ' +
+                      'which have more than ~10 jumps in the past few days. Check ' +
+                      'here: <https://grafana.chimenet.ca/d/NTyRb6SSz> ' +
+                      'to ensure that these channels are being flagged.',
                   },
                   value: 'ok',
                 },
@@ -462,18 +464,18 @@ module.exports = {
             optional: true,
             label: {
               type: 'plain_text',
-              text: 'Gain jumps',
+              text: 'Autocorrelation jumps',
             },
           },
           {
-            block_id: 'gains_note_block',
+            block_id: 'jumps_note_block',
             type: 'input',
             label: {
               type: 'plain_text',
               text: 'Note:',
             },
             element: {
-              action_id: 'gains_note',
+              action_id: 'jumps_note',
               type: 'plain_text_input',
               multiline: true,
               placeholder: {
