@@ -454,7 +454,7 @@ module.exports = {
                     type: 'mrkdwn',
                     text: 'Locate channels here: <https://theremin.chimenet.ca/graphs/jumps> ' +
                       'which have more than ~10 jumps in the past few days. Check ' +
-                      'here: <https://grafana.chimenet.ca/d/NTyRb6SSz/dvw-flagged-channel-check?orgId=1> ' +
+                      'here: <https://grafana.chimenet.ca/d/NTyRb6SSz> ' +
                       'to ensure that these channels are being flagged.',
                   },
                   value: 'ok',
