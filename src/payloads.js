@@ -92,10 +92,12 @@ module.exports = {
                     '- Check any alerts in `chime_ops`, `rx_hut_alerts`, `gpu_hut_alerts`\n' +
                     '- Check `gpu_hut_ops` to see if Coco is reporting any issues\n' +
                     '- Check the calibration broker page in Grafana and make note of anything odd\n' +
-                    '- Check the counter here (https://theremin.chimenet.ca/graphs/jumps) for feeds with ' +
-                    'a large number of jumps (> 3-5). Check those feeds here ' +
-                    '(https://grafana.chimenet.ca/d/v_R89dSiz/correlator-input-info) to make sure they are being ' +
-                    'consistently flagged',
+                    '- Check the table under the ' +
+                    '[Counter header in theremin](https://theremin.chimenet.ca/graphs/jumps) for feeds with a ' +
+                    'large number of jumps (> 3-5). Sort the table by decreasing Number of Jumps and get the ' +
+                    'associated Correlator Input IDs. Check those feeds ' +
+                    '[in Grafana](https://grafana.chimenet.ca/d/v_R89dSiz/correlator-input-info) ' +
+                    'to make sure they are being consistently flagged',
             },
           },
           {
