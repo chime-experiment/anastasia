@@ -143,7 +143,7 @@ module.exports = {
                 {
                   text: {
                     type: 'plain_text',
-                    text: 'Post to Lightwood',
+                    text: 'Post to run notes',
                   },
                   value: 'lw',
                 },
