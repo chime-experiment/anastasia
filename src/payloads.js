@@ -15,7 +15,7 @@ module.exports = {
       ]),
     };
   },
-  confirmation: context => {
+  report: context => {
     return {
       channel: context.channel_id,
       text: 'Report sent!',
@@ -37,6 +37,14 @@ module.exports = {
             text: context.report,
           },
         },
+      ]),
+    };
+  },
+  signoff: context => {
+    return {
+      channel: context.channel_id,
+      text: 'Signed off!',
+      blocks: JSON.stringify([
         {
           type: 'section',
           text: {
@@ -118,6 +126,28 @@ module.exports = {
                 type: 'plain_text',
                 text: 'Discuss anything relevant from your shift.',
               },
+            },
+          },
+          {
+            block_id: 'lw_block',
+            type: 'input',
+            label: {
+              type: 'plain_text',
+              text: 'Check box to also add your report to the run notes:',
+            },
+            optional: true,
+            element: {
+              type: 'checkboxes',
+              action_id: 'lw',
+              options: [
+                {
+                  text: {
+                    type: 'plain_text',
+                    text: 'Post to Lightwood',
+                  },
+                  value: 'lw',
+                },
+              ],
             },
           },
         ],
