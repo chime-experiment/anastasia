@@ -5,7 +5,7 @@ const api = require('./api');
 const payloads = require('./payloads');
 
 /*
- *  Send report via chat.postMessage to #tsar_committee
+ *  Send sign-off and report via chat.postMessage to #tsar_committee
  */
 const sendReport = async(report) => {
 
@@ -19,26 +19,13 @@ const sendReport = async(report) => {
   debug('sendReport: %o', result);
 };
 
-/*
- *  Send sign-off via chat.postMessage to #tsar_committee
- */
-const sendSignOff = async(signoff) => {
-
-  let message = payloads.signoff({
-    channel_id: process.env.ANASTASIA_SLACK_CHANNEL,
-    user: signoff.user_id,
-  });
-
-  let result = await api.callAPIMethod('chat.postMessage', message);
-  debug('sendSignOff: %o', result);
-};
-
 // Create report. Call users.info to get the username
 // from their user ID
 const create = async(userId, view) => {
 
   let user_info = await api.callAPIMethod('users.info', { user: userId });
   let user_name = user_info.user.real_name;
+  debug('user: %o', user_info.user);
 
   let user_report = view.state.values.notes_block.report_text.value;
   let send_to_lw = view.state.values.lw_block.lw.selected_options.length > 0;
@@ -50,8 +37,7 @@ const create = async(userId, view) => {
   }
 
   await sendReport({user_id: userId, report: user_report});
-  await sendSignOff({user_id: userId});
 
 };
 
-module.exports = {create, sendReport, sendSignOff};
+module.exports = {create, sendReport};
