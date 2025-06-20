@@ -18,7 +18,7 @@ module.exports = {
   report: context => {
     return {
       channel: context.channel_id,
-      text: 'Report sent!',
+      text: context.report,
       blocks: JSON.stringify([
         {
           type: 'section',
