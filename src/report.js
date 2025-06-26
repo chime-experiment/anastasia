@@ -24,19 +24,15 @@ const sendReport = async(report) => {
 const create = async(userId, view) => {
 
   let user_info = await api.callAPIMethod('users.info', { user: userId });
-  let user_name = user_info.user.real_name;
-  debug('user: %o', user_info.user);
+  let user_real_name = user_info.user.real_name;
 
   let user_report = view.state.values.notes_block.report_text.value;
-  let send_to_lw = view.state.values.lw_block.lw.selected_options.length > 0;
 
-  if (send_to_lw) {
-    let lightwood_post = `<@${process.env.ANASTASIA_LIGHTWOOD_SLACK_ID}> post`;
-    let run_notes_preamble = `(${user_name} - shift report):`;
-    user_report = `${lightwood_post} ${run_notes_preamble} ${user_report}`;
-  }
+  let lightwood_post = `<@${process.env.ANASTASIA_LIGHTWOOD_SLACK_ID}> post`;
+  let run_notes_preamble = `(${user_real_name} - shift report):`;
+  let report_msg = `${lightwood_post} ${run_notes_preamble} ${user_report}`;
 
-  await sendReport({user_id: userId, report: user_report});
+  await sendReport({user_id: userId, report: report_msg});
 
 };
 

@@ -104,28 +104,6 @@ module.exports = {
               },
             },
           },
-          {
-            block_id: 'lw_block',
-            type: 'input',
-            label: {
-              type: 'plain_text',
-              text: 'Check box to also add your report to the run notes:',
-            },
-            optional: true,
-            element: {
-              type: 'checkboxes',
-              action_id: 'lw',
-              options: [
-                {
-                  text: {
-                    type: 'plain_text',
-                    text: 'Post to run notes',
-                  },
-                  value: 'lw',
-                },
-              ],
-            },
-          },
         ],
       }),
     };
