@@ -15,16 +15,16 @@ module.exports = {
       ]),
     };
   },
-  confirmation: context => {
+  report: context => {
     return {
       channel: context.channel_id,
-      text: 'Report sent!',
+      text: context.report,
       blocks: JSON.stringify([
         {
           type: 'section',
           text: {
             type: 'mrkdwn',
-            text: '*Report from Last Shift*',
+            text: `*<@${context.user}> signed off. Report from their shift:*`,
           },
         },
         {
@@ -37,22 +37,6 @@ module.exports = {
             text: context.report,
           },
         },
-        {
-          type: 'section',
-          text: {
-            type: 'mrkdwn',
-            text: `*<@${context.user}> signed off.*`,
-          },
-        },
-        // {
-        //   type: 'context',
-        //   elements: [
-        //     {
-        //       type: 'mrkdwn',
-        //       text: '*See all tsarina reports here*: http://foo.bar',
-        //     },
-        //   ],
-        // },
       ]),
     };
   },
