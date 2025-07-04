@@ -29,7 +29,7 @@ const create = async(userId, view) => {
   let user_report = view.state.values.notes_block.report_text.value;
 
   let lightwood_post = `<@${process.env.ANASTASIA_LIGHTWOOD_SLACK_ID}> post`;
-  let run_notes_preamble = `(${user_real_name} - shift report):`;
+  let run_notes_preamble = `'''(${user_real_name} - shift report)''':`;
   let report_msg = `${lightwood_post} ${run_notes_preamble} ${user_report}`;
 
   await sendReport({user_id: userId, report: report_msg});
